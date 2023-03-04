@@ -1,0 +1,39 @@
+
+
+/*? Animation for menu */
+
+.nav-animate button{
+    animation: menu-opening .7s forwards ease-in-out;
+    transform: translateX(-120%);
+}
+
+.nav-animate > button:nth-child(1){
+    animation-delay: 0s;
+}
+.nav-animate > button:nth-child(2){
+    animation-delay: .05s;
+}
+.nav-animate > button:nth-child(3){
+    animation-delay: .1s;
+}
+.nav-animate > button:nth-child(4){
+    animation-delay: .15s;
+}
+.nav-animate > button:nth-child(5){
+    animation-delay: .2s;
+}
+.nav-animate > button:nth-child(6){
+    animation-delay: .25s;
+}
+.nav-animate > button:nth-child(7){
+    animation-delay: .3s;
+}
+.nav-animate > button:nth-child(8){
+    animation-delay: .35s;
+}
+
+@keyframes menu-opening {
+    100%{
+        transform: translateX(0);
+    }
+}

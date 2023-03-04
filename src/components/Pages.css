@@ -1,0 +1,44 @@
+/* .planet--animate {
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1.2);
+} */
+
+
+.wrapper{
+  background-image: url(assets/background-stars.svg);
+}
+
+/* Had to do this manually because tailwind doesn't support dynamic classes */
+.bg-c-mercury{
+  background-color: #347E96;
+  border-top-color: #347E96;
+  background-color: red;
+}
+
+.bg-c-venus{
+  background-color: #9C5B0F;
+}
+
+.bg-c-earth{
+  background-color: #5422A8;
+}
+
+.bg-c-mars{
+  background-color: #A53A25;
+}
+
+.bg-c-jupiter{
+  background-color: #A52420;
+}
+
+.bg-c-saturn{
+  background-color: #A4411A;
+}
+
+.bg-c-uranus{
+  background-color: #189A82;
+}
+
+.bg-c-neptune{
+  background-color: #0C3DAE;
+}
