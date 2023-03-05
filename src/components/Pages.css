@@ -6,13 +6,12 @@
 
 .wrapper{
   background-image: url(assets/background-stars.svg);
+  background-repeat: repeat;
 }
 
 /* Had to do this manually because tailwind doesn't support dynamic classes */
 .bg-c-mercury{
   background-color: #347E96;
-  border-top-color: #347E96;
-  background-color: red;
 }
 
 .bg-c-venus{
@@ -42,3 +41,7 @@
 .bg-c-neptune{
   background-color: #0C3DAE;
 }
+
+/* .active-nav{
+  border-bottom:solid 2px #347E96;
+} */

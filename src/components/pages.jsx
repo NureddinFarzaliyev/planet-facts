@@ -108,10 +108,10 @@ const Pages = () => {
     }
 
     return (
-        <div className="wrapper bg-c-background bg-cover bg-center h-screen">
+        <div className="wrapper bg-c-background bg-cover bg-center min-h-screen">
             {/* NAV */}
-            <div className="NAV bg-c-background shadow-2xl p-10 text-white flex justify-between items-center
-           lg:h-10 lg:items lg:justify-center lg:items-start lg:flex-col lg:w-[100%]">
+            <div className="NAV bg-c-background p-10 text-white flex justify-between items-center
+           lg:h-10 lg:items lg:justify-center lg:items-start lg:flex-col lg:w-[100%] lg:shadow-2xl lg:border-b-0 z-10">
                 {/* Logo */}
                 <h1 className="font-f-header font-bold text-5xl lg:text-xl">THE PLANETS</h1>
                 {/* Hamburger icon for mobile */}

@@ -3,7 +3,7 @@
 /*? Animation for menu */
 
 .nav-animate button{
-    animation: menu-opening .7s forwards ease-in-out;
+    animation: menu-opening .5s forwards ease-in-out;
     transform: translateX(-120%);
 }
 
