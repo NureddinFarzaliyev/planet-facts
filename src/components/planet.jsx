@@ -9,13 +9,14 @@ const Planet = ({ currentPlanet }) => {
 
     if (currentPlanet && currentPlanet.name) { // checks if currentplanet state hook setted 
 
+        const link = `Images.${currentPlanet.name.toLowerCase()}`
+
         // Set color state to current planet's name
         const [color, setColor] = useState();
 
         useEffect(() => {
             setColor(currentPlanet.name.toLowerCase())
         }, [currentPlanet])
-
 
         // Function to change information button colors 
         const buttonColorHandler = (addColor, remove1, remove2) => {
@@ -27,7 +28,6 @@ const Planet = ({ currentPlanet }) => {
             buttonRemove2.classList.remove(`bg-c-${color}`)
         }
 
-
         // Functions to change data based on information button clicked
         const setOverview = () => {
             const element = document.querySelector('.main_text')
@@ -36,6 +36,9 @@ const Planet = ({ currentPlanet }) => {
 
             const source = document.querySelector('.source_link')
             source.href = currentPlanet.overview.source
+
+            // const image = document.querySelector('.planet_image')
+            // image.src = `Images.${currentPlanet.name.toLowerCase()}`
         }
 
         const setInternal = () => {
@@ -56,7 +59,6 @@ const Planet = ({ currentPlanet }) => {
             source.href = currentPlanet.geology.source
         }
 
-
         // Nav buttons (aka information buttons)
         const Navbutton = ({ number, text, secondaryText, param }) => {
             return (
@@ -73,9 +75,9 @@ const Planet = ({ currentPlanet }) => {
         const Bottomcard = ({ text, number }) => {
             return (
                 <div className='border-[1px] mx-[5%] px-[5%] py-5 mt-5 border-c-nav-text flex items-center justify-between
-                    lg:mx-3 lg:px-5 lg:py-8 lg:flex lg:flex-col lg:w-[20%] lg:items-start'>
+                    lg:mx-3 lg:px-5 lg:py-7 lg:flex lg:flex-col lg:w-[20%] lg:items-start'>
                     <p className='tracking-[0.15rem] text-c-nav-text font-bold'>{text}</p>
-                    <h1 className='font-bold font-f-header text-4xl lg:mt-4 font-bold'>{number}</h1>
+                    <h1 className='font-f-header text-4xl lg:mt-4 font-bold'>{number}</h1>
                 </div>
             )
         }
@@ -86,12 +88,12 @@ const Planet = ({ currentPlanet }) => {
                 <div>{currentPlanet.overview.content}</div> */}
                 <div className='TOP mt-10  lg:flex lg:justify-around'> {/*flex justify-center flex-col*/}
                     <div className='IMAGE flex justify-center items-center h-[40rem]'>
-                        <img src={Images.mercury} alt="imig" className='w-50 h-50' />
+                        <img src={Images.earth} alt="imig" className='planet_image w-50 h-50' />
                     </div>
                     <div className="INFO lg:mt-20 lg:w-[30%]">
-                        <h1 className='text-center font-bold lg:text-left text-7xl font-f-header tracking-[0.0852275rem]'>{currentPlanet.name}</h1>
-                        <p className='main_text text-center lg:text-left mx-auto mt-16 text-2xl lg:text-xl text-c-nav-text'>{currentPlanet.overview.content}</p>
-                        <div className='flex text-xl mt-10 flex justify-center text-c-nav-text lg:justify-start'>
+                        <h1 className='text-center font-bold lg:text-left text-7xl font-f-header tracking-[0.0852275rem]'>{currentPlanet.name.toUpperCase()}</h1>
+                        <p className='main_text text-center lg:text-left mx-auto mt-12 text-2xl lg:text-xl text-c-nav-text'>{currentPlanet.overview.content}</p>
+                        <div className='flex text-xl mt-10 justify-center text-c-nav-text lg:justify-start'>
                             Source:
                             <a className='source_link flex underline ml-1' target="__blank">Wikipedia <img className='w-5 h-5 ml-1 mt-1 opacity-40' src={Images.sourceIcon}></img></a>
                         </div>
