@@ -2,12 +2,10 @@ import { useState, useEffect } from "react"
 import Planet from "./planet"
 import './Pages.css'
 import './animation.css'
-
 import { Images } from "./constants"
 
 
 const Pages = () => {
-
     const [planets, setPlanets] = useState([])
     const [currentPlanet, setCurrentPlanet] = useState([])
 
@@ -23,19 +21,44 @@ const Pages = () => {
         getData()
     }, [])
 
-
     //! Change data on click and animate
     const clickHandler = (number) => {
         setTimeout(() => {
-            // const planetElement = document.querySelector('.planet')
-            // planetElement.classList.toggle('planet--animate')
+            // Image animation
+            menuHandler();
+            const planetElement = document.querySelector('.TOP')
+            planetElement.classList.add('planet--animate')
         }, 0)
 
         setTimeout(() => {
-            // const planetElement = document.querySelector('.planet')
-            // planetElement.classList.toggle('planet--animate')
+            // Image animation
+            const planetElement = document.querySelector('.TOP')
             setCurrentPlanet(planets[number])
-        }, 0 /*500*/)
+            planetElement.classList.remove('planet--animate')
+            planetElement.classList.add('planet--animate-2')
+        }, 500) //500
+
+        setTimeout(() => {
+            // Letter animation
+            const planetLetters = document.querySelectorAll('.planetLetter')
+            let i = 0
+            for (i == 0; i < planetLetters.length; i++) {
+                planetLetters[i].classList.add('header-animate')
+            }
+        }, 520);
+
+        setTimeout(() => {
+            // Image animation
+            const planetElement = document.querySelector('.TOP')
+            planetElement.classList.remove('planet--animate-2')
+
+            // Letter animation
+            const planetLetters = document.querySelectorAll('.planetLetter')
+            let i = 0
+            for (i == 0; i < planetLetters.length; i++) {
+                planetLetters[i].classList.remove('header-animate')
+            }
+        }, 1200)
 
         // console.log(currentPlanet.overview.content)
     }
@@ -53,13 +76,14 @@ const Pages = () => {
         } else if (buttons.classList.contains('hidden')) {
             buttons.classList.remove('hidden');
             buttons.classList.add('visible')
-            buttons.classList.add('nav-animate')
+            if (window.innerWidth < 1024) {
+                buttons.classList.add('nav-animate')
+            }
             console.log('sawed')
         }
     }
 
     //!Components
-
     //? Buttons to change data
     const Planetbutton = ({ number }) => {
         if (planets && planets[number]) {
@@ -84,17 +108,16 @@ const Pages = () => {
                 </button>
             )
         } else {
-            return ('error')
+            return ('')
         }
     }
 
     //? Buttons in one div
     const Buttons = () => {
         return (
-            <div className="buttons w-[100%] pl-10 bg-c-background left-0 h-[90%] hidden text-c-nav-text top-32 text-4xl absolute
+            <div className="buttons z-30 w-[100%] lg:mt-0 pl-10 bg-c-background left-0 h-[90%] hidden text-c-nav-text top-32 text-4xl absolute
             lg:mt-0 lg:flex lg:text-xl lg:right-0 lg:background-none lg:mr-10
-            lg:h-auto lg:top-auto lg:w-auto lg:left-auto lg:pl-auto
-            ">
+            lg:h-auto lg:top-auto lg:w-auto lg:left-auto lg:pl-auto">
                 <Planetbutton number={0} />
                 <Planetbutton number={1} />
                 <Planetbutton number={2} />
@@ -125,9 +148,6 @@ const Pages = () => {
             <div className="planet text-white">
                 <Planet currentPlanet={currentPlanet} />
             </div>
-
-            {/* <div className="planet">{currentPlanet.name}</div> */}
-            {/* <Planetbutton number={0} /> */}
         </div >
     )
 }

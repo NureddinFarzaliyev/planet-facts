@@ -16,6 +16,8 @@ import saturn from './assets/planet-saturn.svg'
 import uranus from './assets/planet-uranus.svg'
 import neptune from './assets/planet-neptune.svg'
 
+export const planetImgs = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+
 // planet internal images
 import mercuryInt from './assets/planet-mercury-internal.svg'
 import venusInt from './assets/planet-venus-internal.svg'
@@ -25,6 +27,8 @@ import jupiterInt from './assets/planet-jupiter-internal.svg'
 import saturnInt from './assets/planet-saturn-internal.svg'
 import uranusInt from './assets/planet-uranus-internal.svg'
 import neptuneInt from './assets/planet-neptune-internal.svg'
+
+export const planetInts = [mercuryInt, venusInt, earthInt, marsInt, jupiterInt, saturnInt, uranusInt, neptuneInt]
 
 // planet geology images
 import mercuryGeo from './assets/geology-mercury.png'
@@ -36,39 +40,29 @@ import saturnGeo from './assets/geology-saturn.png'
 import uranusGeo from './assets/geology-uranus.png'
 import neptuneGeo from './assets/geology-neptune.png'
 
+export const planetGeos = [mercuryGeo, venusGeo, earthGeo, marsGeo, jupiterGeo, saturnGeo, uranusGeo, neptuneGeo]
+
 export const Images = {
     // Icons
     hamburgerIcon: hamburgerIcon,
     chevron: chevron,
     sourceIcon: sourceIcon,
-
-    // Planets
-    mercury: mercury,
-    venus: venus,
-    earth: earth,
-    mars: mars,
-    jupiter: jupiter,
-    saturn: saturn,
-    uranus: uranus,
-    neptune: neptune,
-
-    // Planets internal
-    mercuryInt: mercuryInt,
-    venusInt: venusInt,
-    earthInt: earthInt,
-    marsInt: marsInt,
-    jupiterInt: jupiterInt,
-    saturnInt: saturnInt,
-    uranusInt: uranusInt,
-    neptuneInt: neptuneInt,
-
-    // Planets geological
-    mercuryGeo: mercuryGeo,
-    venusGeo: venusGeo,
-    earthGeo: earthGeo,
-    marsGeo: marsGeo,
-    jupiterGeo: jupiterGeo,
-    saturnGeo: saturnGeo,
-    uranusGeo: uranusGeo,
-    neptuneGeo: neptuneGeo,
 };
+
+
+//! Some functions
+
+export const setImg = (shownImg, hiddenImg, hiddenImg2) => {
+
+    const hidden1 = document.querySelector(`.${hiddenImg}`)
+    const hidden2 = document.querySelector(`.${hiddenImg2}`)
+    const shown = document.querySelector(`.${shownImg}`)
+
+    hidden1.classList.add('hidden')
+    hidden2.classList.add('hidden')
+    shown.classList.remove('hidden')
+
+    console.log('hidden:', hidden1, hidden2)
+    console.log('shown:', shown)
+
+}
