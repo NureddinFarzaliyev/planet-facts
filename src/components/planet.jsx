@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Images, planetImgs, planetInts, planetGeos, setImg } from './constants'
 import './Pages.css'
+import { PlanetImg, PlanetInt, PlanetGeo } from './planetImages'
+import { Bottomcard } from './bottomcard'
+import { Navbutton } from './changebutton'
 
 const Planet = ({ currentPlanet }) => {
     if (currentPlanet && currentPlanet.name) { // checks if currentplanet state hook setted 
@@ -49,7 +52,6 @@ const Planet = ({ currentPlanet }) => {
             source.href = currentPlanet.structure.source
 
             setImg('intImgDiv', 'imgDiv', 'geoImgDiv')
-
         }
 
         const setGeology = () => {
@@ -61,57 +63,8 @@ const Planet = ({ currentPlanet }) => {
             source.href = currentPlanet.geology.source
 
             setImg('geoImgDiv', 'imgDiv', 'intImgDiv')
-
         }
 
-        // Nav buttons (aka information buttons)
-        const Navbutton = ({ number, text, secondaryText, param, def }) => {
-            return (
-                <button className={`${text} ${def ? `bg-c-${color}` : ''} items-center border-${color} tracking-[0.15rem] h-20 px-10 font-bold flex transition duration-500
-                            lg:px-0 lg:border-[1px] lg:border-c-nav-text lg:w-[120%] lg:ml-[-10%] lg:h-16 lg:flex lg:mt-5 lg:items-center
-                            hover:scale-105`} onClick={param}>
-                    <span className='hidden lg:inline-block lg:mx-8'>{number}</span>
-                    <div className='text-white tracking-[0.3rem]'> <span className='hidden lg:inline-block'> {secondaryText} </span> {text}</div>
-                </button>
-            )
-        }
-
-        // Bottom information cards
-        const Bottomcard = ({ text, number }) => {
-            return (
-                <div className='border-[1px] mx-[5%] px-[5%] py-5 mt-5 border-c-nav-text flex items-center justify-between
-                    lg:mx-3 lg:px-5 lg:py-7 lg:flex lg:flex-col lg:w-[20%] lg:items-start'>
-                    <p className='tracking-[0.15rem] text-c-nav-text font-bold'>{text}</p>
-                    <h1 className='font-f-header text-4xl lg:mt-4 font-bold'>{number}</h1>
-                </div>
-            )
-        }
-
-        // Image with dynamic src
-        const PlanetImg = ({ imgUrl }) => {
-            return (
-                <div className='imgDiv w-72 h-72 lg:w-96 lg:h-96'>
-                    <img src={imgUrl} alt='' className='planet_image' />
-                </div>
-            )
-        }
-
-        const PlanetInt = ({ imgUrl }) => {
-            return (
-                <div className='intImgDiv w-72 h-72 lg:w-96 lg:h-96 hidden'>
-                    <img src={imgUrl} alt='' className='planet_image' />
-                </div>
-            )
-        }
-
-        const PlanetGeo = ({ imgUrl1, imgUrl2 }) => {
-            return (
-                <div className='geoImgDiv w-72 h-72 lg:w-96 lg:h-96 hidden'>
-                    <img src={imgUrl1} alt='' className='planet_image left-0 right-0 mx-auto' />
-                    <img src={imgUrl2} alt="" className='mt-[-10rem] w-40 left-0 right-0 mx-auto' />
-                </div>
-            )
-        }
 
         // Splitting planet to names to animate on laod
         const planetName = currentPlanet.name.toUpperCase().split('');
@@ -128,7 +81,7 @@ const Planet = ({ currentPlanet }) => {
                     </div> {/*currentPlanet.name.toUpperCase()*/}
                     <div className="INFO lg:mt-20 lg:w-[30%]">
                         <h1 className='text-center font-bold lg:text-left text-7xl font-f-header tracking-[0.0852275rem]'>
-                            <div className='planetsDiv overflow-hidden h-20 width-auto overflow-hidden'>
+                            <div className='planetsDiv overflow-hidden h-20 width-auto'>
                                 {planetName.map((letter) => {
                                     return (
                                         <span className='planetLetter'>{letter}</span>
@@ -143,9 +96,9 @@ const Planet = ({ currentPlanet }) => {
                         </div>
                         <div className='absolute top-32 flex justify-between px-10 w-screen text-c-nav-text
                         lg:block lg:relative lg:w-auto lg:flex-col lg:left-0 lg:top-10'>
-                            <Navbutton number={"01"} text={"OVERVIEW"} param={setOverview} def={window.innerWidth > 1024 ? true : false} />
-                            <Navbutton number={"02"} text={"STRUCTURE"} secondaryText={"INTERNAL "} param={setInternal} />
-                            <Navbutton number={"03"} text={"GEOLOGY"} secondaryText={"SURFACE "} param={setGeology} />
+                            <Navbutton number={"01"} text={"OVERVIEW"} color={color} param={setOverview} def={window.innerWidth > 1024 ? true : false} />
+                            <Navbutton number={"02"} text={"STRUCTURE"} color={color} secondaryText={"INTERNAL "} param={setInternal} />
+                            <Navbutton number={"03"} text={"GEOLOGY"} color={color} secondaryText={"SURFACE "} param={setGeology} />
                         </div>
                     </div>
                 </div>

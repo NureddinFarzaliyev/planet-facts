@@ -62,7 +62,7 @@ export const setImg = (shownImg, hiddenImg, hiddenImg2) => {
     hidden2.classList.add('hidden')
     shown.classList.remove('hidden')
 
-    console.log('hidden:', hidden1, hidden2)
-    console.log('shown:', shown)
+    // console.log('hidden:', hidden1, hidden2)
+    // console.log('shown:', shown)
 
 }

@@ -9,7 +9,7 @@ const Pages = () => {
     const [planets, setPlanets] = useState([])
     const [currentPlanet, setCurrentPlanet] = useState([])
 
-    //! Get data and assign hooks
+    // Get data and assign hooks
     useEffect(() => {
         const getData = async () => {
             const response = await fetch('../data.json')
@@ -21,7 +21,7 @@ const Pages = () => {
         getData()
     }, [])
 
-    //! Change data on click and animate
+    // Change data on click and animate
     const clickHandler = (number) => {
         setTimeout(() => {
             // Image animation
@@ -63,7 +63,7 @@ const Pages = () => {
         // console.log(currentPlanet.overview.content)
     }
 
-    //! Menu handler
+    // Menu handler
     const menuHandler = () => {
         const buttons = document.querySelector('.buttons')
 
@@ -72,19 +72,19 @@ const Pages = () => {
             buttons.classList.remove('visible');
             buttons.classList.add('hidden')
             buttons.classList.remove('nav-animate')
-            console.log('hidden')
+            // console.log('hidden')
         } else if (buttons.classList.contains('hidden')) {
             buttons.classList.remove('hidden');
             buttons.classList.add('visible')
             if (window.innerWidth < 1024) {
                 buttons.classList.add('nav-animate')
             }
-            console.log('sawed')
+            // console.log('sawed')
         }
     }
 
     //!Components
-    //? Buttons to change data
+    // Buttons to change data
     const Planetbutton = ({ number }) => {
         if (planets && planets[number]) {
             return (
@@ -112,11 +112,11 @@ const Pages = () => {
         }
     }
 
-    //? Buttons in one div
+    // Buttons in one div
     const Buttons = () => {
         return (
             <div className="buttons z-30 w-[100%] lg:mt-0 pl-10 bg-c-background left-0 h-[90%] hidden text-c-nav-text top-32 text-4xl absolute
-            lg:mt-0 lg:flex lg:text-xl lg:right-0 lg:background-none lg:mr-10
+            lg:flex lg:text-xl lg:right-0 lg:background-none lg:mr-10
             lg:h-auto lg:top-auto lg:w-auto lg:left-auto lg:pl-auto">
                 <Planetbutton number={0} />
                 <Planetbutton number={1} />
