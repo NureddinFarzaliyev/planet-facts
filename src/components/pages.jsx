@@ -12,7 +12,7 @@ const Pages = () => {
     // Get data and assign hooks
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch('../data.json')
+            const response = await fetch('data.json')
             const data = await response.json()
 
             setPlanets(data)
